@@ -7,6 +7,7 @@ A separate ruby repo will run .pipeline/package_app.sh to packer the app to be d
 # Test locally
 
 Create test director 
+
 `mkdir /tmp/working-dir`
 
 Create /tmp/working-dir/rebuild.sh to be used for debug and testing
@@ -14,15 +15,16 @@ Create /tmp/working-dir/rebuild.sh to be used for debug and testing
 ```
 ↳ cat rebuild.sh 
 rm -rf docker product
-docker image rm --force test-app:1
+docker image rm --force sample-app:1 || echo "No containers"
+docker rm -vf $(docker ps -a -q) || echo  "No images"
 git clone git@github.com:MarcusMaximus/sample-app.git product
 ./product/.pipeline/package_app.sh
 cd docker
-docker build -t 'test-py:1' .
+docker build -t 'sample-app:1' .
 # Debug the docker container
-# docker run --entrypoint 'env' -p"5000:5000" -it test-py:1 bash
+# docker run --entrypoint 'env' -p"5000:5000" -it sample-app:1 bash
 # run the container 
-docker run -p"5000:5000" -it test-py:1
+docker run -p"5000:5000" -it sample-app:1
 ```
 
 Run ./rebuild.sh from the working directory to clean the directory and rebuild from repo
