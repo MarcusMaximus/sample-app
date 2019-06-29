@@ -8,9 +8,9 @@ A separate ruby repo will run .pipeline/package_app.sh to packer the app to be d
 
 Create test director 
 
-`mkdir /tmp/working-dir`
+`mkdir  /opt/agent-working-dir`
 
-Create /tmp/working-dir/rebuild.sh to be used for debug and testing
+Create  /opt/agent-working-dir/rebuild.sh to be used for debug and testing
 
 ```
 ↳ cat rebuild.sh 
@@ -31,4 +31,5 @@ Run ./rebuild.sh from the working directory to clean the directory and rebuild f
 
 Test the app via
 http://localhost:5000/hello
+http://localhost:5000/health
 http://localhost:5000/

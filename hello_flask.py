@@ -10,3 +10,11 @@ def index():
 @app.route('/hello')
 def hello():
     return 'Hello, World'
+
+@app.route('/health')
+def health():
+    return 'Hello, health'
+
+@app.route('/version')
+def version():
+    return 'Hello, version'
