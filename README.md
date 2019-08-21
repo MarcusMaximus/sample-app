@@ -6,6 +6,14 @@ A separate ruby repo will run .pipeline/package_app.sh to packer the app to be d
 
 # Test locally
 
+```bash
+python3 -m venv venv
+. venv/bin/activate
+pip3 install -r requirements.txt
+export FLASK_APP=hello_flask.py
+flask run --host=0.0.0.0
+```
+
 Create test director 
 
 `mkdir  /opt/agent-working-dir`
